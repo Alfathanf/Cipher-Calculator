@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e2f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        h1 { color: #00ffff; }
+        h2 { 
+            color: #00ffff88;
+            font-size: 14px;
+            margin: 0;
+            align-items: center;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        select, input, textarea, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            resize: none;
+        }
+        button {
+            cursor: pointer;
+            background: #00b3b3;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover { background: #009999; }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: #2c2c3c;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #00ffff44;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cipher Calculator</h1>
+    <div class="container">
+        <!-- Input Section -->
+        <label>Plain Text:</label><br>
+        <textarea id="plainText" placeholder="Enter plain text here"></textarea><br>
+
+        <!-- Key Input (dynamic) -->
+        <div id="keyContainer">
+            <label>Key:</label><br>
+            <input type="text" id="key" placeholder="Enter key here"><br>
+        </div>
+        
+        <!-- Output Section -->
+        <label>Cipher Text:</label><br>
+        <textarea id="cipherText" placeholder="Enter Cipher text here"></textarea><br>
+
+        <!-- Algorithm Selection -->
+        <label>Algorithm:</label><br>
+        <select id="algorithm" onchange="updateKeyInputs()">
+            <option value="vigenere">Vigenere Cipher</option>
+            <option value="affine">Affine Cipher</option>
+            <option value="playfair">Playfair Cipher</option>
+            <option value="hill">Hill Cipher</option>
+            <option value="enigma">Enigma Cipher</option>
+        </select><br>
+
+        <!-- Action Buttons -->
+        <button onclick="encrypt()">Encrypt</button>
+        <button onclick="decrypt()">Decrypt</button>
+        <footer>
+            <h2>Credit: Farrel Alfat'han (21120123130101)</h2>
+        </footer>
+    </div>
+
+    <!-- Import cipher logic module -->
+    <script src="cipher.js"></script>
+    <script>
+        // initialize key inputs when page loads
+        window.addEventListener('DOMContentLoaded', updateKeyInputs);
+    </script>
+</body>
+</html>
